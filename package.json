@@ -6,6 +6,8 @@
   "scripts": {
     "start": "vite",
     "dev": "vite",
+    "build:prototype": "npm --prefix prototype install && npm --prefix prototype run build && node scripts/sync-prototype-demo.mjs",
+    "prebuild": "npm run build:prototype",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"

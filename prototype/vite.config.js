@@ -10,4 +10,17 @@ export default defineConfig({
     strictPort: true,
     open: false,
   },
+  build: {
+    cssCodeSplit: false,
+    rollupOptions: {
+      output: {
+        entryFileNames: 'assets/index.js',
+        chunkFileNames: 'assets/chunk-[name]-[hash].js',
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name?.endsWith('.css')) return 'assets/index.css'
+          return 'assets/[name]-[hash][extname]'
+        },
+      },
+    },
+  },
 })
